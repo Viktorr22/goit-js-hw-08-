@@ -4,5 +4,4 @@ import { galleryItems } from './gallery-items';
 
 console.log(galleryItems);
 
-const hello = 'hello world';
-console.log(hello);
+
