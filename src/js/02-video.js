@@ -14,25 +14,21 @@ player.on('timeupdate', throttle(onPlay, 1000));
 
 
 try {
-    const savedSettings = localStorage.getItem(CURRENT_TIME);
-     if (!savedSettings) {
-       console.log(0); 
-    } 
-     else {
-         player.setCurrentTime(savedSettings).then(function (seconds) {
-   
-    }).catch(function(error) {
-        switch (error.name) {
-        case 'RangeError':           
-            break;
-        default:            
-            break;
+player
+  .setCurrentTime(localStorage.getItem(CURRENT_TIME) || 0)
+  .then(function (seconds) {})
+  .catch(function (error) {
+ switch (error.name) {
+ case "RangeError":
+ break;
+ default:
+ break;
     }
-});}
+  });
    
 }
 catch (error) {
-    console.log(error.name);
+    console.log(error.name); 
 };
 
 

@@ -26,28 +26,27 @@ function onFormInput(event) {
     localStorage.setItem(FEEDBACK_FORM, JSON.stringify(formData));    
 }
 
-function outputMessage () {
-    const saveMessage = localStorage.getItem(FEEDBACK_FORM);
-    if (!saveMessage) {
-        return
-    }
-    else {
 
-        formData = JSON.parse(saveMessage);        
-        
-        // const objValues = Object.entries(formData);
-        // console.log(objValues);
-        // console.log( objValues.forEach(function () {
-        //     ??????;
-        // }));        
-              
-        email.value = formData.email; 
-        textarea.value = formData.message; 
-        
-
+function outputMessage() {
+ try {
+ const saveMessage = localStorage.getItem(FEEDBACK_FORM);
+ if (!saveMessage) {
+ return;
     }
 
-}
+ formData = JSON.parse(saveMessage);
+
+ Object.entries(formData).forEach(([key, value]) => {
+ form.elements[key].value = value;
+    });
+  } catch (error) {}
+} 
+
+
+
+
+
+
 
 
 
